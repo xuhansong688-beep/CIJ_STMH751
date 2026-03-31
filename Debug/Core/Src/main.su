@@ -1,6 +1,6 @@
 ../Core/Src/main.c:115:10:CalcRespCRC	24	static
 ../Core/Src/main.c:126:6:SendResponseFrame	24	static
-../Core/Src/main.c:154:6:GenerateSineTable	48	static
+../Core/Src/main.c:154:6:GenerateSineTable	56	static
 ../Core/Src/main.c:185:6:Updatephase	16	static
 ../Core/Src/main.c:203:6:Setphase	24	static
 ../Core/Src/main.c:210:6:SetFrequency	64	static

@@ -159,7 +159,7 @@ void GenerateSineTable(uint8_t amp1,uint8_t harm1,uint8_t amp2,uint8_t harm2)
         //sine_table[i] = (uint16_t)(xx + (xx-1) * sinf(angle));
         float angle_1 = 2.0f * 3.1415926f * i * harm1 / NUMBER_OF_SAMPLE;
         float angle_2 = 2.0f * 3.1415926f * i * harm2 / NUMBER_OF_SAMPLE;
-        sine_table[i] = (uint16_t)(xx + (xx-1)*(amp1)/(amp1+amp2)* sinf(angle_1) + (xx-1)*(amp2)/(amp1+amp2)* sinf(angle_2)); // Avec A1 + A2 <= 255
+        sine_table[i] = (uint16_t)(xx -1 + xx * (float)amp1 / 255.0 * sinf(angle_1) + xx * (float)amp2 / 255.0 * sinf(angle_2)); // Avec A1 + A2 <= 255
     }
 }
 
@@ -526,7 +526,7 @@ static void MX_TIM2_Init(void)
   {
     Error_Handler();
   }
-  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_UPDATE;
   sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
   if (HAL_TIMEx_MasterConfigSynchronization(&htim2, &sMasterConfig) != HAL_OK)
   {
